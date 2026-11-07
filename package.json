@@ -1,0 +1,47 @@
+{
+  "name": "hdd-organizer",
+  "version": "2.9.4",
+  "description": "Sangriva: an offline catalog for the movies, shows, music and games on your drives",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win",
+    "dist:dir": "electron-builder --win --dir"
+  },
+  "author": "Neeraj",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3"
+  },
+  "productName": "Sangriva",
+  "build": {
+    "appId": "com.sangriva.app",
+    "productName": "Sangriva",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!**/*.zip",
+      "!test*/**"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Sangriva"
+    },
+    "portable": {
+      "artifactName": "Sangriva-Portable-${version}.exe"
+    }
+  }
+}

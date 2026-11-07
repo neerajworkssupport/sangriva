@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' poster: data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>Sangriva</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <img class="logo-mark" src="assets/logo-mark.png" alt="Sangriva">
+      <div>Sangriva<small>Your digital collection, unified</small></div>
+    </div>
+    <nav>
+      <div class="nav-item active" data-view="overview">Overview</div>
+      <div class="nav-item" data-view="all">Library</div>
+      <div class="nav-item" data-view="movie">Movies</div>
+      <div class="nav-item" data-view="series">TV Series</div>
+      <div class="nav-item" data-view="music">Music</div>
+      <div class="nav-item" data-view="game">Games</div>
+      <div class="nav-item" data-view="videos">Videos <span class="nav-badge" id="videosBadge" hidden></span></div>
+      <div class="nav-item" data-view="collections">Collections</div>
+      <div class="nav-item" data-view="missing">Missing</div>
+      <div class="nav-item" data-view="queue">To Watch <span class="nav-badge" id="queueBadge" hidden></span></div>
+      <div class="nav-item" data-view="wishlist">Wishlist <span class="nav-badge" id="wishBadge" hidden></span></div>
+      <div class="nav-item" data-view="duplicates">Duplicates</div>
+      <div class="nav-item" data-view="find">Find on Drive</div>
+      <div class="nav-item" data-view="compare">Compare Drives</div>
+      <div class="nav-item" data-view="drives">Drives</div>
+      <div class="nav-item" data-view="safety">Copy Safety</div>
+      <div class="nav-item" data-view="move">Move Planner</div>
+      <div class="nav-item" data-view="cleanup">Clean Up</div>
+      <div class="nav-item" data-view="share">Look &amp; Share</div>
+      <div class="nav-item" data-view="backup">Backup &amp; History</div>
+      <div class="nav-item" data-view="noposter">No Poster</div>
+      <div class="nav-item" data-view="settings">Settings &amp; About</div>
+    </nav>
+    <div class="sidebar-footer">
+      <div id="sideDrives" class="side-card"></div>
+      <div class="credit-line" title="This product uses the TMDB API but is not endorsed or certified by TMDB."><span id="tmdbLogoSlot"></span><span>Movie &amp; TV data and posters: <b>TMDB</b><br>Games: <b>Steam</b></span></div>
+      <button id="clearBtn" class="secondary">Clear Library</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div id="demoBar" class="demo-bar" hidden><span><b>Demo catalog.</b> These titles are made up, so you can look around. No real drive is involved and nothing here can touch your files.</span><button class="secondary small-btn" id="demoLearn">What is this?</button><button class="small-btn" id="demoRemove">Remove demo</button></div>
+    <header class="header">
+      <button id="scanBtn">Scan Folder / Drive</button>
+      <div class="searchbox">
+        <input type="text" id="search" placeholder="Search… try 2160p  >10GB  offline" />
+        <kbd>Ctrl K</kbd>
+      </div>
+      <button id="syncBtn" class="secondary" title="Download episode lists, cast and franchise info from TMDB (saved for offline use)">Sync Info</button>
+      <button id="fetchBtn" class="secondary" title="Use posters already in your folders, then fetch the rest from TMDB">Fetch Posters</button>
+      <button id="keyBtn" class="secondary" title="Set your TMDB API key">TMDB Key</button>
+      <span id="status">Ready</span>
+    </header>
+    <section id="content" class="content"></section>
+  </main>
+
+  <dialog id="keyDialog">
+    <form id="keyForm">
+      <h3>TMDB API key</h3>
+      <p class="hint">Paste your v3 API key or the v4 Read Access Token. It is saved only on this computer (app data folder).</p>
+      <input type="password" id="keyInput" autocomplete="off" spellcheck="false">
+      <div id="keyMsg" class="hint"></div>
+      <div class="dialog-actions">
+        <button type="button" id="keyCancel" class="secondary">Cancel</button>
+        <button type="submit" id="keySave">Save &amp; verify</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="palette" class="palette">
+    <input type="text" id="paletteInput" placeholder="Search titles, artists and people in your cached cast lists..." autocomplete="off" spellcheck="false">
+    <div id="paletteList"></div>
+  </dialog>
+
+  <dialog id="confirmDialog" class="confirm">
+    <form method="dialog" id="confirmForm">
+      <h3 id="confirmTitle"></h3>
+      <div id="confirmBody" class="confirm-body"></div>
+      <label id="confirmCheckRow" class="check-row" hidden><input type="checkbox" id="confirmCheck"> <span id="confirmCheckText"></span></label>
+      <div class="dialog-actions">
+        <button type="button" id="confirmCancel" class="secondary">Cancel</button>
+        <button type="submit" id="confirmOk">OK</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="i18n.js"></script>
+  <script src="ui-common.js"></script>
+  <script src="views-overview.js"></script>
+  <script src="views-detail.js"></script>
+  <script src="views-missing.js"></script>
+  <script src="views-drives.js"></script>
+  <script src="views-collections.js"></script>
+  <script src="views-franchises.js"></script>
+  <script src="views-tools.js"></script>
+  <script src="views-videos.js"></script>
+  <script src="views-wishlist.js"></script>
+  <script src="views-find.js"></script>
+  <script src="views-compare.js"></script>
+  <script src="views-backup.js"></script>
+  <script src="views-safety.js"></script>
+  <script src="views-queue.js"></script>
+  <script src="views-move.js"></script>
+  <script src="views-cleanup.js"></script>
+  <script src="views-share.js"></script>
+  <script src="views-settings.js"></script>
+  <script src="views-music.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
