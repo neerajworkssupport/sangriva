@@ -5,6 +5,6 @@ module.exports = {
   // folder name used by older versions (before the rename); an existing catalog there is kept and reused
   legacyDataDir: 'hdd-organizer',
   // GitHub "owner/repo" whose Releases are checked for updates. Leave empty until the project is published.
-  releaseRepo: '',
+  releaseRepo: 'neerajworkssupport/sangriva',
   backupFormat: 'hddorg-backup' // unchanged so backups from older versions still restore
 };
